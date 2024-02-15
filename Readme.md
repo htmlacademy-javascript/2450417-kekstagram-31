@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Юлия Виноградова](https://up.htmlacademy.ru/javascript/31/user/2450417).
-* Наставник: `Arthur Litovko`.
+* Наставник: `Arthur Litovko`(https://htmlacademy.ru/profile/id6927).
 
 ---
 
