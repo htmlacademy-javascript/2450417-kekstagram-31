@@ -66,7 +66,7 @@ const creatPhoto = () => {
 
   return {
     id,
-    url: 'photo/{id}.jpg',
+    url: `photo/{id}.jpg`,
     description: getRandomElement (Description),
     likes: getRandomInteger (15,200),
     comment
