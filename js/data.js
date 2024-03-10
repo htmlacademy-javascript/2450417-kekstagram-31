@@ -40,7 +40,7 @@ const DESCRIPTION = [
 
 const createComment = () => ({
   id: getCommentId (),
-  avatar: 'img/avatar-$(getRandomInteger(1, 6).svg)',
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   message: getRandomElement(USER_MESSAGES),
   name:getRandomElement(USER_NAME),
 
@@ -52,7 +52,7 @@ const createPhoto = () => {
 
   return {
     id,
-    url: `photo/${id}.jpg`,
+    url: `photos/${id}.jpg`,
     description: getRandomElement (DESCRIPTION),
     likes: getRandomInteger (15,200),
     comment
