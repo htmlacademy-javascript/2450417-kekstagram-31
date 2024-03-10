@@ -1,4 +1,4 @@
 
-import {creatPhoto} from './data.js';
-window.console.log(creatPhoto);
-
+import { createPhotoCard } from './data.js';
+import { container } from './thumbnails.js';
+container (createPhotoCard);

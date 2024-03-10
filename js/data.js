@@ -1,8 +1,10 @@
-import {getRandomElement} from './util.js';
-import {getRandomInteger} from './util.js';
-let currentCommentId = 1;
-const getCommentId = () => currentCommentId++;
 
+import {getRandomElement,getRandomInteger} from './util.js';
+const createIdGenerator = () => {
+  let id = 1;
+  return () => id++;
+};
+const getCommentId = createIdGenerator();
 const USER_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -23,19 +25,10 @@ const USER_NAME = [
 
 ];
 
-const USER_AVATAR = [
-  'img/avatar-1.svg',
-  'img/avatar-2.svg',
-  'img/avatar-3.svg',
-  'img/avatar-4.svg',
-  'img/avatar-5.svg',
-  'img/avatar-6.svg',
-];
 
-let currentPhotoId = 1;
-const getPhotoId = () => currentPhotoId++;
+const getPhotoId = createIdGenerator();
 
-const Description = [
+const DESCRIPTION = [
   'Поймал дзен',
   'В самое сердце',
   'Можно лучше',
@@ -45,25 +38,30 @@ const Description = [
 
 ];
 
-const creatComment = () => ({
+const createComment = () => ({
   id: getCommentId (),
-  avatar: getRandomElement (USER_AVATAR),
-  message: getRandomElement (USER_MESSAGES),
-  name:getRandomElement (USER_NAME),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  message: getRandomElement(USER_MESSAGES),
+  name:getRandomElement(USER_NAME),
 
 });
-const creatPhoto = () => {
+const createPhoto = () => {
   const id = getPhotoId ();
   const countComment = getRandomInteger (0, 30);
-  const comment = Array.from({ length: countComment }, creatComment);
+  const comment = Array.from({ length: countComment }, createComment);
 
   return {
     id,
-    url: `photo/${id}.jpg`,
-    description: getRandomElement (Description),
+    url: `photos/${id}.jpg`,
+    description: getRandomElement (DESCRIPTION),
+
     likes: getRandomInteger (15,200),
     comment
   };
 };
-creatPhoto();
-export {creatPhoto};
+
+
+const createPhotoCard = (count) => Array.from({length: count}, createPhoto);
+
+export {createPhotoCard};
+
