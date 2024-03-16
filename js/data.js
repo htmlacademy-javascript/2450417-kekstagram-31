@@ -1,10 +1,10 @@
+
 import {getRandomElement,getRandomInteger} from './util.js';
 const createIdGenerator = () => {
   let id = 1;
   return () => id++;
 };
 const getCommentId = createIdGenerator();
-
 const USER_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -54,10 +54,12 @@ const createPhoto = () => {
     id,
     url: `photos/${id}.jpg`,
     description: getRandomElement (DESCRIPTION),
+
     likes: getRandomInteger (15,200),
     comment
   };
 };
+
 
 const createPhotoCard = (count) => Array.from({length: count}, createPhoto);
 
