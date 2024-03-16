@@ -1,3 +1,7 @@
 import { createPhotoCard } from './data.js';
-import { container } from './thumbnails.js';
-container (createPhotoCard);
+import { savePhotos } from './photo-state.js';
+import {renderThumbnails} from './thumbnails.js';
+
+const photos = createPhotoCard(25);
+savePhotos(photos);
+renderThumbnails(photos);

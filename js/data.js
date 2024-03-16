@@ -62,3 +62,4 @@ const createPhoto = () => {
 const createPhotoCard = (count) => Array.from({length: count}, createPhoto);
 
 export {createPhotoCard};
+
