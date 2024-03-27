@@ -31,7 +31,7 @@ function openModal(picture) {
 
   showBigPhoto(picture);
   renderComments (picture.comments);
-entListener('keydown', onDocumentKeydown);
+  document.addEventListener('keydown', onDocumentKeydown);
 }
 //1
 function closeModal() {
