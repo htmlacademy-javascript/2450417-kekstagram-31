@@ -8,7 +8,6 @@ const closeButton = bigPicture.querySelector('.cancel');
 
 
 function showBigPhoto (photo) {
-
   bigPicture.querySelector ('.big-picture__img img').setAttribute ('src', photo.url);
   bigPicture.querySelector ('.likes-count').textContent = photo.likes;
   bigPicture.querySelector ('.social__caption').textContent = photo.description;
@@ -32,9 +31,6 @@ function openModal(picture) {
 
   showBigPhoto(picture);
   renderComments (picture.comments);
-
-  renderComments(picture.comments);
-
   document.addEventListener('keydown', onDocumentKeydown);
 }
 //1
