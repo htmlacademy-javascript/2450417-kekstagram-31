@@ -1,6 +1,8 @@
 import { isEscapeKey } from './util.js';
 import './big-picture.js';
 import {resetValidation, validate} from './hashtegs-validation.js';
+import {resetScale} from './change-scale.js';
+import {resetEffect} from './effects.js';
 
 const body = document.body;
 const form = document.querySelector('.img-upload__form');
@@ -38,5 +40,7 @@ form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   if (validate()) {
     closeModal();
+    resetEffect();
+    resetScale();
   }
 });
