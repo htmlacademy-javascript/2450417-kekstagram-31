@@ -13,18 +13,14 @@ const filename = form.filename;
 const editingModal = form.querySelector('.img-upload__overlay');
 const formSubmitButton = document.querySelector('.img-upload__submit');
 
-const SubmitButtonText = {
-  IDLE: 'Сохранить',
-  SENDING: 'Сохраняю...',
-};
+
 const disabledSubmitButton = () => {
   formSubmitButton.disabled = true;
-  formSubmitButton.textContent = SubmitButtonText.SENDING;
+
 };
 
 const enableSubmitButton = () => {
   formSubmitButton.disabled = false;
-  formSubmitButton.textContent = SubmitButtonText.IDLE;
 };
 const closeModal = () => form.reset();
 
