@@ -12,7 +12,7 @@ const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const isUniqueArray = (array) => new Set(array).size === array.length;
 
-// если ошибк
+// если ошибки
 const REMOVE_MESSEGE_TIMEOUT = 5000;
 const errorLoadDataTemplate = document.querySelector('#data-error').content;
 const body = document.body;

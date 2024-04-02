@@ -1,4 +1,4 @@
-import { isUniqueArray } from '../util.js';
+import { isUniqueArray } from './util.js';
 
 const form = document.querySelector('.img-upload__form');
 

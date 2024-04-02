@@ -1,8 +1,8 @@
 
-import { savePhotos } from './user/photo-state.js';
-import { renderThumbnails } from './user/thumbnails.js';
-import './function/form/form.js';
-import { getData } from './function/form/server.js';
+import { savePhotos } from './photo-state.js';
+import { renderThumbnails } from './thumbnails.js';
+import './form.js';
+import { getData } from './server.js';
 import {errorLoadData} from './util.js';
 
 getData ()

@@ -3,12 +3,29 @@ import './big-picture.js';
 import {resetValidation, validate} from './hashtegs-validation.js';
 import {resetScale} from './change-scale.js';
 import {resetEffect} from './effects.js';
+import {sendData} from './server.js';
+import {successForm} from './successForm.js';
+import {errorForm} from './errorForm.js';
 
 const body = document.body;
 const form = document.querySelector('.img-upload__form');
 const filename = form.filename;
 const editingModal = form.querySelector('.img-upload__overlay');
+const formSubmitButton = document.querySelector('.img-upload__submit');
 
+const SubmitButtonText = {
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...',
+};
+const disabledSubmitButton = () => {
+  formSubmitButton.disabled = true;
+  formSubmitButton.textContent = SubmitButtonText.SENDING;
+};
+
+const enableSubmitButton = () => {
+  formSubmitButton.disabled = false;
+  formSubmitButton.textContent = SubmitButtonText.IDLE;
+};
 const closeModal = () => form.reset();
 
 const isFocusText = () =>
@@ -34,13 +51,22 @@ form.addEventListener('reset', () => {
   classToggle();
   document.removeEventListener('keydown', onDocumentEscape);
   resetValidation();
+  resetScale();
+  resetEffect();
 });
-
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  if (validate()) {
-    closeModal();
-    resetEffect();
-    resetScale();
+  const isValid = validate();
+  if (isValid) {
+    disabledSubmitButton();
+    sendData(new FormData(evt.target))
+      .then(() => {
+        successForm();
+        closeModal();
+      })
+      .catch(errorForm)
+      .finally (enableSubmitButton);
+
   }
 });
+
