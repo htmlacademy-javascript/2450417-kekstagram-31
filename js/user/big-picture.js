@@ -1,5 +1,5 @@
 import { renderComments } from './comments-card.js';
-import {isEscapeKey} from './util.js';
+import {isEscapeKey} from '../util.js';
 
 const newBody = document.body;
 
