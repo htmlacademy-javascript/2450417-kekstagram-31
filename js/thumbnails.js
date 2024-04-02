@@ -1,6 +1,6 @@
 import { openModal } from './big-picture';
 import { getPhotoById } from './photo-state';
-
+// миниатюры
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
