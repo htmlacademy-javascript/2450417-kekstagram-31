@@ -34,4 +34,8 @@ container.addEventListener('click', (evt) => {
 
   openModal (photo);
 });
-export {renderThumbnails};
+const clearThubnails = () => container.querySelector('.picture').array.forEach((item) => {
+  item.remove();
+});
+
+export {renderThumbnails, clearThubnails};

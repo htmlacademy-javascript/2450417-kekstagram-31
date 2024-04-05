@@ -76,7 +76,7 @@ customSlider.on('update', () => {
 });
 
 const resetEffect = () => {
-  form.effect.value = 'none';
+  form.effect.value = '0,5';
   effectsList.dispatchEvent(changeEvent);
 };
 
