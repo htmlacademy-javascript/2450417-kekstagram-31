@@ -4,21 +4,28 @@ export const successForm = () => {
   const successButton = newSuccessTamplate.querySelector('.success__button');
   const newSuccessSection = newSuccessTamplate.querySelector('.success__inner');
   document.querySelector('body').append(newSuccessTamplate);
+
   const onCloseSuccess = (evt) => {
-    if (evt.target === newSuccessSection) {
-      newSuccessTamplate.remove();
+    if (! newSuccessSection.contains(evt.target)) {
+      removeForm();
     }
   };
   const onEscapeSuccess = (evt) => {
-    if (evt.key === 'Escape') {
-      newSuccessTamplate.remove();
+    if ((evt.key === 'Escape')) {
+      removeForm();
     }
   };
   const onButtonClick = () => {
-    newSuccessTamplate.remove();
-
+    removeForm();
   };
-  document.addEventListener('keydown', onEscapeSuccess,onCloseSuccess);
   successButton.addEventListener('click', onButtonClick);
-};
+  document.addEventListener('keydown', onEscapeSuccess);
+  document.addEventListener('click',onCloseSuccess);
 
+  function removeForm() {
+    successButton.removeEventListener('click', onButtonClick);
+    document.removeEventListener('keydown', onEscapeSuccess,);
+    document.removeEventListener('click', onCloseSuccess);
+    newSuccessTamplate.remove();
+  }
+};
