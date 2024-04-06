@@ -1,3 +1,12 @@
+// рандом
+const getRandomInteger = (a,b) => {
+  const lower = Math.ceil (Math.min(a,b));
+  const upper = Math.floor (Math.max(a,b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
+const getSortRandome = () => getRandomInteger(-1, 1);
+const getRandomElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 // Escape
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
@@ -20,9 +29,10 @@ const errorLoadData = () => {
 //
 function debounce (callback, timeoutDelay = 500) {
   let timeoutId;
-  return (...rest) => {
+  return function() {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+    timeoutId = setTimeout(() => callback(...arguments), timeoutDelay);
   };
 }
-export {isEscapeKey,isUniqueArray,errorLoadData,debounce};
+
+export {getRandomElement,getRandomInteger,isEscapeKey,isUniqueArray,errorLoadData,debounce,getSortRandome};
