@@ -18,30 +18,31 @@ function filterChange (evt) {
   if (activeFilter === targetButton) {
     return;
   }
-  activeFilter.classList.remove(actieClassname);
-  evt.target.classList.add(actieClassname);
+  activeFilter.classList.add(actieClassname);
+  targetButton.classList.remove(actieClassname);
   filterdefault = targetButton.getAttribute('id');
   selectFilter();
+
 }
 let pictures = [];
 let filteredData = [];
 
-function selectFilter () {
-  if(filterdefault === 'filter-random'){
+function selectFilter() {
+  if(filterdefault === Filters.RANDOM){
     filteredData = pictures.sort(() => Math.random() - 0.5).slice(0, PPORTION_PFOTOS);
   }
-  if(filterdefault === 'filter-discussed'){
+  if(filterdefault === Filters.DISCUSSED){
     filteredData = pictures.slice().sort((picA,picB) => picB.comments.length - picA.comments.length);
   }
-  if(filterdefault === 'filter-default'){
+  if(filterdefault === Filters.DEFAULT){
     filteredData = pictures;
   }
   debounceRender(filteredData);
 }
 
-function sddd(picturesData) {
+function sortPhotos (picturesData) {
   filtersContainer.classList.remove('img-filters--inactive');
   filtersContainer.addEventListener('click',filterChange);
   pictures = picturesData;
 }
-export {sddd};
+export {sortPhotos};

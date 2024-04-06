@@ -27,7 +27,6 @@ export const errorForm = () => {
   document.addEventListener('keydown', onEscapeError);
 
   function removeError() {
-    errorButton.removeEventListener('click',onButtonClickError);
     document.removeEventListener('keydown', onEscapeError);
     document.removeEventListener('click', onCloseError);
     newErrorTemplate.remove();

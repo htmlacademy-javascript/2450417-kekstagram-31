@@ -12,7 +12,7 @@ const form = document.querySelector('.img-upload__form');
 const filename = form.filename;
 const editingModal = form.querySelector('.img-upload__overlay');
 const formSubmitButton = document.querySelector('.img-upload__submit');
-
+const isErrorOpened = () => document.querySelector('.error') !== null;
 
 const disabledSubmitButton = () => {
   formSubmitButton.disabled = true;
@@ -28,7 +28,7 @@ const isFocusText = () =>
   [form.hashtags, form.description].includes(document.activeElement);
 
 const onDocumentEscape = (evt) => {
-  if (isEscapeKey(evt) && !isFocusText()) {
+  if (isEscapeKey(evt) && !isErrorOpened() && !isFocusText()) {
     evt.preventDefault();
     closeModal();
   }
