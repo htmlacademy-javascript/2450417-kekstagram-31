@@ -64,6 +64,8 @@ const pristine = new Pristine(form, {
   errorTextParent: 'img-upload__field-wrapper',
 });
 
+const validate = () => pristine.validate();
+const resetValidation = () => pristine.reset();
 pristine.addValidator(form.hashtags, validateHashtags, () => errorMessage);
 
 pristine.addValidator(
@@ -72,7 +74,5 @@ pristine.addValidator(
   `Максимальная длина комментария ${Description.MAX_LENGTH} символов`
 );
 
-const validate = () => pristine.validate();
-const resetValidation = () => pristine.reset();
 
 export { validate, resetValidation };

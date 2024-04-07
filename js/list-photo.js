@@ -1,48 +1,55 @@
-import {debounce} from './util.js';
-import {renderThumbnails} from './thumbnails.js';
-const PPORTION_PFOTOS = 10;
+
+import {debounce, getSortRandom} from './util.js';
+import {renderThumbnails, clearThumbnails} from './thumbnails.js';
+const RANDOM_PHOTO_AMOUNT = 10;
 const filtersContainer = document.querySelector('.img-filters');
-const actieClassname = 'img-filters__button--active';
-const debounceRender = debounce(renderThumbnails);
+const [defaultButton, randomButton, discussedButton] = filtersContainer.querySelectorAll('.img-filters__button');
+let activeFilter = defaultButton;
+const ACTIVE_CLASS = 'img-filters__button--active';
 
-const Filters = {
-  DEFAULT: 'filter-default',
-  RANDOM: 'filter-random',
-  DISCUSSED: 'filter-discussed'
+const toggleButtons = (button) => {
+  activeFilter.classList.remove(ACTIVE_CLASS);
+  button.classList.add(ACTIVE_CLASS);
+  activeFilter = button;
 };
+const debounceFilterRender = debounce(selectFilter);
+const handleFilterChange = (evt) => {
 
-let filterdefault = Filters.DEFAULT;
-function filterChange (evt) {
-  const activeFilter = document.querySelector(`.${actieClassname}`);
   const targetButton = evt.target;
   if (activeFilter === targetButton) {
     return;
   }
-  activeFilter.classList.add(actieClassname);
-  targetButton.classList.remove(actieClassname);
-  filterdefault = targetButton.getAttribute('id');
-  selectFilter();
 
-}
+  toggleButtons(targetButton);
+  debounceFilterRender();
+};
+const sortPhotosByComments = (picA, picB) => picB.comments.length - picA.comments.length;
 let pictures = [];
-let filteredData = [];
-
 function selectFilter() {
-  if(filterdefault === Filters.RANDOM){
-    filteredData = pictures.sort(() => Math.random() - 0.5).slice(0, PPORTION_PFOTOS);
+  clearThumbnails();
+  let filteredData = [];
+
+  switch (activeFilter) {
+    case randomButton:
+      filteredData = pictures
+        .toSorted(getSortRandom)
+        .slice(0, RANDOM_PHOTO_AMOUNT);
+      break;
+    case discussedButton:
+      filteredData = pictures.toSorted(sortPhotosByComments);
+      break;
+    default:
+      filteredData = pictures;
   }
-  if(filterdefault === Filters.DISCUSSED){
-    filteredData = pictures.slice().sort((picA,picB) => picB.comments.length - picA.comments.length);
-  }
-  if(filterdefault === Filters.DEFAULT){
-    filteredData = pictures;
-  }
-  debounceRender(filteredData);
+  renderThumbnails(filteredData);
+
 }
 
 function sortPhotos (picturesData) {
   filtersContainer.classList.remove('img-filters--inactive');
-  filtersContainer.addEventListener('click',filterChange);
+
+  filtersContainer.addEventListener('click',handleFilterChange);
+
   pictures = picturesData;
 }
 export {sortPhotos};

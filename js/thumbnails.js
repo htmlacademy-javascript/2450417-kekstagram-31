@@ -1,23 +1,19 @@
 import { openModal } from './big-picture';
 import { getPhotoById } from './photo-state';
-// миниатюры
+
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
-
 const createThumbnails = (photo) => {
   const thumbnail = template.cloneNode(true);
-  thumbnail.dataset.id = photo.id;
-
   const image = thumbnail.querySelector('.picture__img');
 
+  thumbnail.dataset.id = photo.id;
   image.src = photo.url;
   image.alt = photo.description;
-
   thumbnail.querySelector('.picture__comments').textContent = photo.comments.length;
   thumbnail.querySelector('.picture__likes').textContent = photo.likes;
   return thumbnail;
 };
-
 const renderThumbnails = (photos) => container.append(...photos.map(createThumbnails));
 
 container.addEventListener('click', (evt) => {
@@ -31,11 +27,12 @@ container.addEventListener('click', (evt) => {
   if(!photo) {
     return;
   }
-
   openModal (photo);
 });
-const clearThubnails = () => container.querySelector('.picture').array.forEach((item) => {
+
+const clearThumbnails = () => container.querySelectorAll('.picture').forEach((item) => {
   item.remove();
 });
 
-export {renderThumbnails, clearThubnails};
+export {renderThumbnails, clearThumbnails};
+
