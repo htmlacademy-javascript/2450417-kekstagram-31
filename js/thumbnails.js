@@ -29,8 +29,10 @@ container.addEventListener('click', (evt) => {
   }
   openModal (photo);
 });
+
 const clearThumbnails = () => container.querySelectorAll('.picture').forEach((item) => {
   item.remove();
 });
 
 export {renderThumbnails, clearThumbnails};
+

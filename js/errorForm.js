@@ -7,6 +7,7 @@ export const errorForm = () => {
 
   const onButtonClickError = () => {
     removeError();
+
   };
   const onCloseError = (evt) => {
     evt.preventDefault();
@@ -14,6 +15,7 @@ export const errorForm = () => {
       removeError();
     }
   };
+
   function onEscapeError(evt) {
     if ((evt.key === 'Escape')){
       evt.stopPropagation();
@@ -21,6 +23,7 @@ export const errorForm = () => {
       removeError();
     }
   }
+
 
   document.addEventListener('click', onCloseError);
   errorButton.addEventListener('click',onButtonClickError);
