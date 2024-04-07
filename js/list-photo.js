@@ -1,3 +1,4 @@
+
 import {debounce, getSortRandom} from './util.js';
 import {renderThumbnails, clearThumbnails} from './thumbnails.js';
 const RANDOM_PHOTO_AMOUNT = 10;
@@ -13,10 +14,12 @@ const toggleButtons = (button) => {
 };
 const debounceFilterRender = debounce(selectFilter);
 const handleFilterChange = (evt) => {
+
   const targetButton = evt.target;
   if (activeFilter === targetButton) {
     return;
   }
+
   toggleButtons(targetButton);
   debounceFilterRender();
 };
@@ -40,11 +43,14 @@ function selectFilter() {
       filteredData = pictures;
   }
   renderThumbnails(filteredData);
+
 }
 
 function sortPhotos (picturesData) {
   filtersContainer.classList.remove('img-filters--inactive');
+
   filtersContainer.addEventListener('click',handleFilterChange);
+
   pictures = picturesData;
 }
 export {sortPhotos};
