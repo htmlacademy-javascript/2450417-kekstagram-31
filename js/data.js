@@ -13,7 +13,6 @@ const USER_MESSAGES = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
-
 const USER_NAME = [
   'Иван',
   'Мария',
@@ -24,10 +23,7 @@ const USER_NAME = [
   'Алена'
 
 ];
-
-
 const getPhotoId = createIdGenerator();
-
 const DESCRIPTION = [
   'Поймал дзен',
   'В самое сердце',
@@ -37,7 +33,6 @@ const DESCRIPTION = [
   'Крутой ракурс'
 
 ];
-
 const createComment = () => ({
   id: getCommentId (),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
@@ -59,8 +54,6 @@ const createPhoto = () => {
     comments
   };
 };
-
-
 const createPhotoCard = (count) => Array.from({length: count}, createPhoto);
 
 export {createPhotoCard};

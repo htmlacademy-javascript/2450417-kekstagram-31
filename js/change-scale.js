@@ -12,21 +12,18 @@ function onChangeScale (value) {
   outputScale.value = `${value}%`;
   photoPreview.style.transform = `scale(${ value / 100})`;
 }
-
 function onIncreaseStep () {
   if(scaleNumber < DEFAULT_SCALE){
     scaleNumber += STEP_SCALE;
     onChangeScale(scaleNumber);
   }
 }
-
 function onDecreaseStep () {
   if(scaleNumber > MIN_SCALE){
     scaleNumber -= STEP_SCALE;
     onChangeScale(scaleNumber);
   }
 }
-
 buttonBigger.addEventListener('click', onIncreaseStep);
 buttonSmaller.addEventListener('click', onDecreaseStep);
 

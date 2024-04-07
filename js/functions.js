@@ -1,9 +1,7 @@
 
-// Функция для проверки длины строки
 // eslint-disable-next-line no-unused-vars
 const lengthString = (string, Maxlength) => string.length <= Maxlength;
 
-//Функция для проверки, является ли строка палиндромом
 // eslint-disable-next-line no-unused-vars
 const findPalendrom = (string) => {
   const formattedinString = string.replaceAll(' ', '').toUpperCase();

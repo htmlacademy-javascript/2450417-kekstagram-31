@@ -8,9 +8,9 @@ import {sortPhotos} from './list-photo.js';
 import './user-pictures.js';
 getData ()
   .then((photos) => {
+    sortPhotos(photos);
     savePhotos(photos);
     renderThumbnails(photos);
-    sortPhotos(photos);
   })
   .catch(errorLoadData);
 
