@@ -8,7 +8,12 @@ export const errorForm = () => {
   const onButtonClickError = () => {
     removeError();
   };
-
+  const onCloseError = (evt) => {
+    evt.preventDefault();
+    if (! innerTemplate.contains(evt.target)) {
+      removeError();
+    }
+  };
   function onEscapeError(evt) {
     if ((evt.key === 'Escape')){
       evt.stopPropagation();
@@ -16,12 +21,7 @@ export const errorForm = () => {
       removeError();
     }
   }
-  const onCloseError = (evt) => {
-    evt.preventDefault();
-    if (! innerTemplate.contains(evt.target)) {
-      removeError();
-    }
-  };
+
   document.addEventListener('click', onCloseError);
   errorButton.addEventListener('click',onButtonClickError);
   document.addEventListener('keydown', onEscapeError);

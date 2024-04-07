@@ -8,7 +8,7 @@ const getSortRandom = () => getRandomInteger(-1, 1);
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isUniqueArray = (array) => new Set(array).size === array.length;
 
-const REMOVE_MESSEGE_TIMEOUT = 5000;
+const REMOVE_MESSAGE_TIMEOUT = 5000;
 const errorLoadDataTemplate = document.querySelector('#data-error').content;
 const body = document.body;
 const errorLoadDataArea = body.querySelector('.data-error');
@@ -18,7 +18,7 @@ const errorLoadData = () => {
   body.append(errorArea);
   setTimeout(() => {
     errorLoadDataArea.remove();
-  }, REMOVE_MESSEGE_TIMEOUT);
+  }, REMOVE_MESSAGE_TIMEOUT);
 };
 
 function debounce (callback, timeoutDelay = 500) {

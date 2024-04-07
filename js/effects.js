@@ -1,7 +1,7 @@
 const FROM_ZERO_TO_HUNDRED = createSliderData();
 const FROM_ZERO_TO_ONE = createSliderData(0, 1, 0.1);
 
-export const Effect = {
+const Effect = {
   none: {
     slider: FROM_ZERO_TO_HUNDRED,
   },
@@ -31,16 +31,7 @@ export const Effect = {
     filter: (value) => `brightness(${value})`
   }
 };
-function createSliderData(min = 0, max = 100, step = 1, start = max) {
-  return {
-    range: {
-      min,
-      max,
-    },
-    start,
-    step,
-  };
-}
+
 const form = document.querySelector('.img-upload__form');
 const effectsList = form.querySelector('.effects__list');
 const sliderContainer = form.querySelector('.img-upload__effect-level');
@@ -52,6 +43,16 @@ const customSlider = noUiSlider.create(sliderElement, {
   ...Effect.none.slider,
   connect: 'lower',
 });
+function createSliderData(min = 0, max = 100, step = 1, start = max) {
+  return {
+    range: {
+      min,
+      max,
+    },
+    start,
+    step,
+  };
+}
 sliderContainer.hidden = true;
 effectsList.addEventListener('change', () => {
   const effect = form.effect.value;

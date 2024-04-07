@@ -1,9 +1,9 @@
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 export const successForm = () => {
-  const newSuccessTamplate = successTemplate.cloneNode(true);
-  const successButton = newSuccessTamplate.querySelector('.success__button');
-  const newSuccessSection = newSuccessTamplate.querySelector('.success__inner');
-  document.querySelector('body').append(newSuccessTamplate);
+  const newSuccessTemplate = successTemplate.cloneNode(true);
+  const successButton = newSuccessTemplate.querySelector('.success__button');
+  const newSuccessSection = newSuccessTemplate.querySelector('.success__inner');
+  document.querySelector('body').append(newSuccessTemplate);
 
   const onCloseSuccess = (evt) => {
     if (! newSuccessSection.contains(evt.target)) {
@@ -26,6 +26,6 @@ export const successForm = () => {
     successButton.removeEventListener('click', onButtonClick);
     document.removeEventListener('keydown', onEscapeSuccess,);
     document.removeEventListener('click', onCloseSuccess);
-    newSuccessTamplate.remove();
+    newSuccessTemplate.remove();
   }
 };

@@ -20,9 +20,8 @@ const handleFilterChange = (evt) => {
   toggleButtons(targetButton);
   debounceFilterRender();
 };
-let pictures = [];
 const sortPhotosByComments = (picA, picB) => picB.comments.length - picA.comments.length;
-
+let pictures = [];
 function selectFilter() {
   clearThumbnails();
   let filteredData = [];

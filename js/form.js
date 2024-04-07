@@ -1,6 +1,6 @@
 import { isEscapeKey } from './util.js';
 import './big-picture.js';
-import {resetValidation, validate} from './hashtegs-validation.js';
+import {resetValidation, validate} from './hashtags-validation.js';
 import {resetScale} from './change-scale.js';
 import {resetEffect} from './effects.js';
 import {sendData} from './server.js';
