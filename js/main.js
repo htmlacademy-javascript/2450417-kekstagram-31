@@ -11,7 +11,6 @@ getData ()
     sortPhotos(photos);
     savePhotos(photos);
     renderThumbnails(photos);
-    sortPhotos(photos);
   })
   .catch(renderError);
 
