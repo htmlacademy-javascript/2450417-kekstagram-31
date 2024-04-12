@@ -1,5 +1,5 @@
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
-export const successForm = () => {
+export const renderSuccessForm = () => {
 
   const newSuccessTemplate = successTemplate.cloneNode(true);
   const successButton = newSuccessTemplate.querySelector('.success__button');

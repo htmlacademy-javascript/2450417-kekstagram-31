@@ -8,22 +8,24 @@ const buttonSmaller = document.querySelector('.scale__control--smaller');
 const outputScale = document.querySelector('.scale__control--value');
 
 let scaleNumber = parseInt(outputScale.value, 10);
-function onChangeScale (value) {
+
+const onChangeScale = (value) => {
   outputScale.value = `${value}%`;
   photoPreview.style.transform = `scale(${ value / 100})`;
-}
-function onIncreaseStep () {
+};
+
+const onIncreaseStep = () => {
   if(scaleNumber < DEFAULT_SCALE){
     scaleNumber += STEP_SCALE;
     onChangeScale(scaleNumber);
   }
-}
-function onDecreaseStep () {
+};
+const onDecreaseStep = () => {
   if(scaleNumber > MIN_SCALE){
     scaleNumber -= STEP_SCALE;
     onChangeScale(scaleNumber);
   }
-}
+};
 buttonBigger.addEventListener('click', onIncreaseStep);
 buttonSmaller.addEventListener('click', onDecreaseStep);
 

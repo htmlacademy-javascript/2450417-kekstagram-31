@@ -1,5 +1,5 @@
 const templateSubmitErr = document.querySelector('#error').content.querySelector('.error');
-export const errorForm = () => {
+export const renderErrorForm = () => {
   const newErrorTemplate = templateSubmitErr.cloneNode(true);
   const errorButton = newErrorTemplate.querySelector('.error__button');
   const innerTemplate = newErrorTemplate.querySelector('.error__inner');

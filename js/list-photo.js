@@ -13,7 +13,7 @@ const toggleButtons = (button) => {
   activeFilter = button;
 };
 const debounceFilterRender = debounce(selectFilter);
-const handleFilterChange = (evt) => {
+const onFilterChange = (evt) => {
 
   const targetButton = evt.target;
   if (activeFilter === targetButton) {
@@ -48,7 +48,7 @@ function selectFilter() {
 function sortPhotos (picturesData) {
   filtersContainer.classList.remove('img-filters--inactive');
 
-  filtersContainer.addEventListener('click',handleFilterChange);
+  filtersContainer.addEventListener('click',onFilterChange);
 
   pictures = picturesData;
 }
