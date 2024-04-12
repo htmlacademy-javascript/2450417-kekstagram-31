@@ -14,7 +14,7 @@ const errorLoadDataTemplate = document.querySelector('#data-error').content;
 const body = document.body;
 const errorLoadDataArea = body.querySelector('.data-error');
 
-const errorLoadData = () => {
+const renderError = () => {
   const errorArea = errorLoadDataTemplate.cloneNode(true);
   body.append(errorArea);
   setTimeout(() => {
@@ -30,5 +30,5 @@ function debounce (callback, timeoutDelay = 500) {
   };
 }
 
-export {getRandomInteger,isEscapeKey,isUniqueArray,errorLoadData,debounce,getSortRandom};
+export {getRandomInteger,isEscapeKey,isUniqueArray,renderError,debounce,getSortRandom};
 

@@ -4,8 +4,8 @@ import {resetValidation, validate} from './hashtags-validation.js';
 import {resetScale} from './change-scale.js';
 import {resetEffect} from './effects.js';
 import {sendData} from './server.js';
-import {successForm} from './successForm.js';
-import {errorForm} from './errorForm.js';
+import {renderSuccessForm} from './successForm.js';
+import {renderErrorForm} from './errorForm.js';
 
 const body = document.body;
 const form = document.querySelector('.img-upload__form');
@@ -14,7 +14,7 @@ const editingModal = form.querySelector('.img-upload__overlay');
 const formSubmitButton = document.querySelector('.img-upload__submit');
 const isErrorOpened = () => document.querySelector('.error') !== null;
 
-const disabledSubmitButton = () => {
+const disableSubmitButton = () => {
   formSubmitButton.disabled = true;
 
 };
@@ -33,18 +33,18 @@ const onDocumentEscape = (evt) => {
     closeModal();
   }
 };
-const classToggle = () => {
+const toggleClass = () => {
   editingModal.classList.toggle('hidden');
   body.classList.toggle('modal-open');
 };
 filename.addEventListener('change', (evt) => {
   evt.preventDefault();
-  classToggle();
+  toggleClass();
   document.addEventListener('keydown', onDocumentEscape);
 });
 
 form.addEventListener('reset', () => {
-  classToggle();
+  toggleClass();
   document.removeEventListener('keydown', onDocumentEscape);
   resetValidation();
   resetScale();
@@ -54,13 +54,13 @@ form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = validate();
   if (isValid) {
-    disabledSubmitButton();
+    disableSubmitButton();
     sendData(new FormData(evt.target))
       .then(() => {
-        successForm();
+        renderSuccessForm();
         closeModal();
       })
-      .catch(errorForm)
+      .catch(renderErrorForm)
       .finally (enableSubmitButton);
 
   }
